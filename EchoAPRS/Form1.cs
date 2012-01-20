@@ -72,18 +72,21 @@ namespace EchoAPRS
             foreach (EchoLink.IStationEntry station in _ELSession.StationEntries)
             {
                 if (_ELInfo.Callsign == station.Callsign)
-                 _ELNode = station.NodeNumber.ToString();
+                {
+                    _ELNode = station.NodeNumber.ToString();
+                    break;
+                }
             }
 
             textBox2.Text = _ELNode;
             object APRSlat = SUBKEY.GetValue("APRSlat");
             temp_str = APRSlat.ToString();
             string APRSlat_str = temp_str.Replace(".","");
-            textBox3.Text = APRSlat_str;
+            textBox3.Text = process_lat_long(APRSlat_str);
             object APRSlon = SUBKEY.GetValue("APRSlon");
             temp_str = APRSlon.ToString();
             string APRSlon_str = temp_str.Replace(".","");
-            textBox4.Text = APRSlon_str;
+            textBox4.Text = process_lat_long(APRSlon_str);
             textBox5.Text = "PASSCODE";
             textBox6.Text = "srvr.aprs-is.net"; // http://www.aprs-is.net/SendOnlyPorts.aspx
             textBox7.Text = "8080";
@@ -91,6 +94,44 @@ namespace EchoAPRS
 
         }
 
+        string process_lat_long(string in_val)
+        {   
+            int temp = 0;
+            float temp_fl = 0;
+            string temp_str = "";
+            temp = in_val.Length;
+            
+            if (in_val[temp - 1] == 'N')
+            {
+                temp_str = in_val.Replace("N", "");
+                temp_str= "" + temp_str[0] + temp_str[1] + "." + temp_str[2] + temp_str[3] + temp_str[4] + temp_str[5] ;
+                temp_fl = Convert.ToSingle(temp_str);
+                return temp_fl.ToString();
+            }
+            else if (in_val[temp - 1] == 'S')
+            {
+                temp_str = in_val.Replace("S", "");
+                temp_str = "-" + temp_str[0] + temp_str[1] + "." + temp_str[2] + temp_str[3] + temp_str[4] + temp_str[5] ;
+                temp_fl = Convert.ToSingle(temp_str);
+                return temp_fl.ToString();
+            }
 
+            if (in_val[temp - 1] == 'E')
+            {
+                temp_str = in_val.Replace("E", "");
+                temp_str = "" + temp_str[0] + temp_str[1] + temp_str[2] + "." + temp_str[3] + temp_str[4] + temp_str[5] ;
+                temp_fl = Convert.ToSingle(temp_str);
+                return temp_fl.ToString();
+            }
+            else if (in_val[temp - 1] == 'W')
+            {
+                temp_str = in_val.Replace("W", "");
+                temp_str = "-" + temp_str[0] + temp_str[1] + temp_str[2] + "." + temp_str[3] + temp_str[4] + temp_str[5] ;
+                temp_fl = Convert.ToSingle(temp_str);
+                return temp_fl.ToString();
+               
+            }
+            return temp_fl.ToString();
+        }
     }
 }
