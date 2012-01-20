@@ -64,20 +64,30 @@ namespace EchoAPRS
             RegistryKey _ELkey = RegistryKey.OpenRemoteBaseKey(Microsoft.Win32.RegistryHive.CurrentUser, "");
             string subkey = "Software\\K1RFD\\EchoLink\\Sysop";             
             SUBKEY = _ELkey.OpenSubKey(subkey);
-
+            string temp_str;
             textBox1.Text = _ELInfo.Callsign.Remove(_ELInfo.Callsign.Length - 1);
             textBox1.AppendText("10");
-            
-            textBox2.Text = "Node#";
+            string _ELNode = "";
+
+            foreach (EchoLink.IStationEntry station in _ELSession.StationEntries)
+            {
+                if (_ELInfo.Callsign == station.Callsign)
+                 _ELNode = station.NodeNumber.ToString();
+            }
+
+            textBox2.Text = _ELNode;
             object APRSlat = SUBKEY.GetValue("APRSlat");
-            textBox3.Text = APRSlat.ToString();
+            temp_str = APRSlat.ToString();
+            string APRSlat_str = temp_str.Replace(".","");
+            textBox3.Text = APRSlat_str;
             object APRSlon = SUBKEY.GetValue("APRSlon");
-            textBox4.Text = APRSlon.ToString();
+            temp_str = APRSlon.ToString();
+            string APRSlon_str = temp_str.Replace(".","");
+            textBox4.Text = APRSlon_str;
             textBox5.Text = "PASSCODE";
             textBox6.Text = "srvr.aprs-is.net"; // http://www.aprs-is.net/SendOnlyPorts.aspx
             textBox7.Text = "8080";
             textBox8.Text = "30";
-
 
         }
 
