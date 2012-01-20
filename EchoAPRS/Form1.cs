@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using EchoLink;
+using Microsoft.Win32;
 
 namespace EchoAPRS
 {
@@ -59,13 +60,19 @@ namespace EchoAPRS
         {
             _ELInfo = new SetupConfig();
             _ELSession = new EchoLinkSession();
+            RegistryKey SUBKEY;
+            RegistryKey _ELkey = RegistryKey.OpenRemoteBaseKey(Microsoft.Win32.RegistryHive.CurrentUser, "");
+            string subkey = "Software\\K1RFD\\EchoLink\\Sysop";             
+            SUBKEY = _ELkey.OpenSubKey(subkey);
 
             textBox1.Text = _ELInfo.Callsign.Remove(_ELInfo.Callsign.Length - 1);
             textBox1.AppendText("10");
-
+            
             textBox2.Text = "Node#";
-            textBox3.Text = "Longitud";
-            textBox4.Text = "Latitud";
+            object APRSlat = SUBKEY.GetValue("APRSlat");
+            textBox3.Text = APRSlat.ToString();
+            object APRSlon = SUBKEY.GetValue("APRSlon");
+            textBox4.Text = APRSlon.ToString();
             textBox5.Text = "PASSCODE";
             textBox6.Text = "srvr.aprs-is.net"; // http://www.aprs-is.net/SendOnlyPorts.aspx
             textBox7.Text = "8080";
@@ -73,6 +80,7 @@ namespace EchoAPRS
 
 
         }
+
 
     }
 }
