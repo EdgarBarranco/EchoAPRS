@@ -1,6 +1,6 @@
-EchoAPRS is a C# application currently under development by me Edgar / KC2UEZ. Any help is appreciated. I am not a C# expert; I just saw the need for this application so I started working with this.
+EchoAPRS is a C# application currently under development by me Edgar / KC2UEZ. Any help is appreciated. I am not a C# expert; I just saw the need for this application so I started working on it.
 
-This application will collect information from EchoLink such as station connects/disconnects and post it to the APRS network using APRS-IS. It will also send a beacon every 30 minutes and it will create an EL-NODE APRS object. 
+This application will collect information from EchoLink such as station connects/disconnects and post this information to the APRS network using APRS-IS. It will also send a beacon every 30 minutes and it will create an EL-NODENUMBER APRS object. 
 
 Change Log:
 1/20/2012: Initial Release. Nothing works yet, but I needed a place to keep everything accessible from multiple machines, so I added the project to GitHub.
