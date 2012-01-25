@@ -4,3 +4,4 @@ This application will collect information from EchoLink such as station connects
 
 Change Log:
 1/20/2012: Initial Release. Nothing works yet, but I needed a place to keep everything accessible from multiple machines, so I added the project to GitHub.
+1/25/2012: Added storage of configuration feature.
