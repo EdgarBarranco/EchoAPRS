@@ -22,6 +22,8 @@ namespace EchoAPRS
     {
         EchoLinkSession _ELSession;
         SetupConfig _ELInfo;
+     //   SysopConfig _ELSetupConfig;
+        IEchoLinkSession _ELevent;
         
         public MainForm1()
         {
@@ -53,7 +55,8 @@ namespace EchoAPRS
         {
             if (File.Exists("EchoAPRS.ini"))
             {
-                toolStripStatusLabel1.Text = "Lading configuration.";
+                this.toolStripStatusLabel1.Text = "Lading configuration.";
+                this.Refresh();
                 FileStream filestream = new FileStream(@"EchoAPRS.ini", FileMode.Open);
                 BinaryFormatter bf = new BinaryFormatter();
                 Config data = new Config();
@@ -86,8 +89,10 @@ namespace EchoAPRS
 
         private void button2_Click(object sender, EventArgs e)
         {
-            toolStripStatusLabel1.Text = "Collecting configuration.";
-            Thread.Sleep(500);
+            this.toolStripStatusLabel1.Text = "Collecting configuration.";
+            this.Refresh();
+
+
             button2.Enabled = false;
             
             _ELInfo = new SetupConfig();
@@ -134,7 +139,9 @@ namespace EchoAPRS
             textBox8.Text = "30";
             textBox9.Text = "WIDW1-1,WIDE2-2";
             button2.Enabled = true;
+            checkBox1.Checked = false;
             toolStripStatusLabel1.Text = "Default values loaded.";
+            
         }
 
         string process_lat_long(string in_val)
@@ -242,6 +249,25 @@ namespace EchoAPRS
             }
             else
                 toolStripStatusLabel1.Text = "No configuration found.";
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+            string Number_of_peers = string.Empty;
+            string Connected_Stations = string.Empty;
+
+            Number_of_peers = _ELSession.NumPeers.ToString();
+
+            if (Number_of_peers != "0")
+            {
+                foreach (IStationEntry station in _ELSession.StationEntries)
+                {
+                    Connected_Stations += station.Callsign.ToString() + " " + station.NodeNumber.ToString() + ", ";
+                }
+                MessageBox.Show(Connected_Stations);
+            }
+                      
         }
     }
 }

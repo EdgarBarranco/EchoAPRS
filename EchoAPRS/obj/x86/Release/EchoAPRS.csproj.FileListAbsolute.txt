@@ -1,0 +1,11 @@
+C:\Documents and Settings\Administrator\my documents\visual studio 2010\Projects\EchoAPRS\EchoAPRS\bin\Release\EchoAPRS.exe
+C:\Documents and Settings\Administrator\my documents\visual studio 2010\Projects\EchoAPRS\EchoAPRS\bin\Release\EchoAPRS.pdb
+C:\Documents and Settings\Administrator\my documents\visual studio 2010\Projects\EchoAPRS\EchoAPRS\obj\x86\Release\ResolveAssemblyReference.cache
+C:\Documents and Settings\Administrator\my documents\visual studio 2010\Projects\EchoAPRS\EchoAPRS\obj\x86\Release\Interop.EchoLink.dll
+C:\Documents and Settings\Administrator\my documents\visual studio 2010\Projects\EchoAPRS\EchoAPRS\obj\x86\Release\EchoAPRS.csproj.ResolveComReference.cache
+C:\Documents and Settings\Administrator\my documents\visual studio 2010\Projects\EchoAPRS\EchoAPRS\obj\x86\Release\EchoAPRS.MainForm1.resources
+C:\Documents and Settings\Administrator\my documents\visual studio 2010\Projects\EchoAPRS\EchoAPRS\obj\x86\Release\EchoAPRS.Properties.Resources.resources
+C:\Documents and Settings\Administrator\my documents\visual studio 2010\Projects\EchoAPRS\EchoAPRS\obj\x86\Release\GenerateResource.read.1.tlog
+C:\Documents and Settings\Administrator\my documents\visual studio 2010\Projects\EchoAPRS\EchoAPRS\obj\x86\Release\GenerateResource.write.1.tlog
+C:\Documents and Settings\Administrator\my documents\visual studio 2010\Projects\EchoAPRS\EchoAPRS\obj\x86\Release\EchoAPRS.exe
+C:\Documents and Settings\Administrator\my documents\visual studio 2010\Projects\EchoAPRS\EchoAPRS\obj\x86\Release\EchoAPRS.pdb
